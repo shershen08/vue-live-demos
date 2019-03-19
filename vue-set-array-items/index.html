@@ -1,0 +1,35 @@
+<html>
+
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p v-for="(n,index) in items" :key="index">{{index}} - {{title}}</p>
+    {{items}}
+    <button @click="myMethod()">myMethod</button>
+    <button @click="myMethodWrong()">myMethodWrong</button>
+  </div>
+</body>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      items: [1, 2, 3, 4, 5],
+      title: 'Hello World!'
+    },
+    methods: {
+      myMethod() {
+        // right
+        Vue.delete(this.items, 2)
+      },
+      myMethodWrong() {
+        // wrong
+        this.items[3] = ''
+      }
+    }
+  });
+</script>
+
+</html>
